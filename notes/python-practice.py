@@ -221,6 +221,4 @@ for request in requests:
 #         audience=request["audience"]="client"
 
 # # print(requests)
-# for request in requests:
-#     a=timeperiod in requests
-#     print(request["id"] , "->", a)
+# c
