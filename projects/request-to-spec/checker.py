@@ -69,34 +69,30 @@ def find_missing_details(text: str) -> list[str]:
     return missing
 
 
-request1 = "Show me the monthly count of new policies for managers"
-request2 = "Give all condo policies"
-request3 = "how many l09 policies details for yearly for client"
-request4 = "provide lko7  Policy Changes quarterly"
-request5 = "provide all inactive loans"
-request6 = " "
-request7 = "MONTHLY COUNT for MANAGERS"
+# request1 = "Show me the monthly count of new policies for managers"
+# request2 = "Give all condo policies"
+# request3 = "how many l09 policies details for yearly for client"
+# request4 = "provide lko7  Policy Changes quarterly"
+# request5 = "provide all inactive loans"
+# request6 = " "
+# request7 = "MONTHLY COUNT for MANAGERS"
 
-requests =[request1,request2,request3,request4, request5 ]
+# requests =[request1,request2,request3,request4, request5 ]
 
-for request in requests:
-    missing = find_missing_details(request)
-    if missing:
-        print(f"'{request}'  is missing: {',' .join(missing)}")
-    else:
-        print(f"'{request}' has everything ")
+# for request in requests:
+#     missing = find_missing_details(request)
+#     if missing:
+#         print(f"'{request}'  is missing: {',' .join(missing)}")
+#     else:
+#         print(f"'{request}' has everything ")
 
-assert find_missing_details(request1) == []
-assert find_missing_details(request2) == ["time period", "metric", "audience"]
-assert find_missing_details(request3) == []
-assert find_missing_details(request4) == ["metric", "audience"]
-assert find_missing_details(request5) == ["time period", "metric", "audience"]
-assert find_missing_details(request6) == ["time period", "metric", "audience"]
-assert find_missing_details(request7) == []
-
-
-
-
+# assert find_missing_details(request1) == []
+# assert find_missing_details(request2) == ["time period", "metric", "audience"]
+# assert find_missing_details(request3) == []
+# assert find_missing_details(request4) == ["metric", "audience"]
+# assert find_missing_details(request5) == ["time period", "metric", "audience"]
+# assert find_missing_details(request6) == ["time period", "metric", "audience"]
+# assert find_missing_details(request7) == []
 
 
 # if missing:
@@ -105,3 +101,54 @@ assert find_missing_details(request7) == []
 #     print(f"'{request}' has everything")
 
 # assert find_missing_details("Give all condo policies") == ["time period", "metric", "audience"]
+
+
+# dataclases
+from models import Request
+
+request1 = Request(
+    id=1,
+    text="Show me the monthly count of new policies for managers",
+    requested_by="Sara",
+    priority="high",
+)
+request2 = Request(
+    id=2, text="Give all condo policies", requested_by="Sara", priority="high"
+)
+request3 = Request(
+    id=3,
+    text="how many l09 policies details for yearly for client",
+    requested_by="Sara",
+    priority="high",
+)
+request4 = Request(
+    id=4,
+    text="provide lko7  Policy Changes quarterly",
+    requested_by="Sara",
+    priority="high",
+)
+request5 = Request(
+    id=5, text="provide all inactive loans", requested_by="Sara", priority="high"
+)
+request6 = Request(id=6, text=" ", requested_by="Sara", priority="high")
+request7 = Request(
+    id=7, text="MONTHLY COUNT for MANAGERS", requested_by="Sara", priority="high"
+)
+
+requests = [request1, request2, request3, request4, request5, request6, request7]
+
+
+for request in requests:
+    missing = find_missing_details(request.text)
+    if missing:
+        print(f"'{request.text}'  is missing: {', '.join(missing)}")
+    else:
+        print(f"'{request.text}' has everything ")
+
+assert find_missing_details(request1.text) == []
+assert find_missing_details(request2.text) == ["time period", "metric", "audience"]
+assert find_missing_details(request3.text) == []
+assert find_missing_details(request4.text) == ["metric", "audience"]
+assert find_missing_details(request5.text) == ["time period", "metric", "audience"]
+assert find_missing_details(request6.text) == ["time period", "metric", "audience"]
+assert find_missing_details(request7.text) == []
