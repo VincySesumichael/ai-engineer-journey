@@ -141,9 +141,9 @@ requests = [request1, request2, request3, request4, request5, request6, request7
 for request in requests:
     missing = find_missing_details(request.text)
     if missing:
-        print(f"  '{request.id}' , '{request.text}'  is missing: {', '.join(missing)}")
+        print(f"  '{request.id}' , '{request.requested_by}' , '{request.text}'  is missing: {', '.join(missing)}")
     else:
-        print(f" '{request.id}' ,'{request.text}' has everything ")
+        print(f" '{request.id}' ,'{request.requested_by}' , '{request.text}' has everything ")
 
 assert find_missing_details(request1.text) == []
 assert find_missing_details(request2.text) == ["time period", "metric", "audience"]
